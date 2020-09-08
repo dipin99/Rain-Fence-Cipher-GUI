@@ -55,25 +55,26 @@ def decrypt(p):
 
 
 root = Tk()
-
-e=Entry(root,width=50)
+frame = LabelFrame(root,text="Rain Fence Cipher",padx=100,pady=100)
+frame.pack(padx=10,pady=10)
+e=Entry(frame,width=50)
 
 
 e.pack()
 
 def Click1():
     c=encrypt(e.get())
-    myLabel=Label(root,text="Encrypted Text: "+c)
+    myLabel=Label(frame,text="Encrypted Text: "+c)
     myLabel.pack()
 
 def Click2():
     c=decrypt(e.get())
-    myLabel=Label(root,text="Decrypted Text: "+c)
+    myLabel=Label(frame,text="Decrypted Text: "+c)
     myLabel.pack()
 
-myButton = Button(root, text="Encrypt", command=Click1)
+myButton = Button(frame, text="Encrypt", command=Click1)
 myButton.pack()
-myButton1 = Button(root, text="Decrypt", command=Click2)
+myButton1 = Button(frame, text="Decrypt", command=Click2)
 myButton1.pack()
 
 root.mainloop()
