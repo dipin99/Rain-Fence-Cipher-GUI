@@ -6,6 +6,7 @@ Created on Sat Aug 29 12:00:13 2020
 """
 from tkinter import *
 from math import *
+from PIL import ImageTk,Image
 x=[]
 
     
@@ -55,25 +56,29 @@ def decrypt(p):
 
 
 root = Tk()
-
-e=Entry(root,width=50)
-
-
+root.title('Cipher')
+root.iconbitmap('bc.ico')
+frame = LabelFrame(root,text="Rain Fence Cipher",padx=100,pady=100,)
+frame.pack(padx=10,pady=10)
+img=ImageTk.PhotoImage(Image.open("unnamed.jpg"))
+e=Entry(frame,width=50)
 e.pack()
 
 def Click1():
     c=encrypt(e.get())
-    myLabel=Label(root,text="Encrypted Text: "+c)
+    myLabel=Label(frame,text="Encrypted Text: "+c)
     myLabel.pack()
 
 def Click2():
     c=decrypt(e.get())
-    myLabel=Label(root,text="Decrypted Text: "+c)
+    myLabel=Label(frame,text="Decrypted Text: "+c)
     myLabel.pack()
 
-myButton = Button(root, text="Encrypt", command=Click1)
+myButton = Button(frame, text="Encrypt", command=Click1)
 myButton.pack()
-myButton1 = Button(root, text="Decrypt", command=Click2)
+myButton1 = Button(frame, text="Decrypt", command=Click2)
 myButton1.pack()
+button_quit =  Button(frame, text="Exit", command=root.quit)
+button_quit.pack()
 
 root.mainloop()
